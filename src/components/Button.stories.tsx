@@ -5,7 +5,7 @@ export default {
   title: 'Components/Button',
   component: Button,
   args: {
-    children: 'Click me in storybook',
+    children: 'Create account',
   },
   argTypes: {
     asChild: {

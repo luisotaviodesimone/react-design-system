@@ -14,7 +14,7 @@ const Button = ({ children, asChild }: ButtonProps) => {
     <>
       <Comp
         className={clsx(
-          'text-gray-900 font-sans text-sm w-full transition-colors focus:ring-2 ring-white bg-cyan-500 px-3 py-4 hover:bg-cyan-300 rounded'
+          'text-gray-900 font-sans text-sm w-full transition-colors focus:ring-2 ring-white bg-cyan-500 px-3 py-4 hover:bg-cyan-300 rounded font-bold'
         )}
       >
         {children}
