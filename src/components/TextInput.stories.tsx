@@ -6,14 +6,12 @@ export default {
   title: 'Components/TextInput',
   component: TextInput.Root,
   args: {
-    children: (
-      <>
-        <TextInput.Icon>
-          <Envelope />
-        </TextInput.Icon>
-        <TextInput.Input placeholder="Type your email adreses" />
-      </>
-    ),
+    children: [
+      <TextInput.Icon>
+        <Envelope />
+      </TextInput.Icon>,
+      <TextInput.Input placeholder="Type your email adreses" />,
+    ],
   },
   argTypes: {
     children: {

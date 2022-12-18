@@ -15,22 +15,22 @@ export interface TextInputIconProps {
   children: React.ReactNode;
 }
 
-const TextInputIcon = ({ children }: { children: React.ReactNode }) => (
-  <Slot className="w6 h6 text-gray-400"></Slot>
-);
-
 const TextInputRoot = ({ children }: TextInputRootProps) => {
   return (
-    <div className="flex items-center gap-3 rounded bg-gray-800 outline-none focus-within:ring-2 ring-cyan-300">
+    <div className="h-12 flex items-center rounded bg-gray-800 outline-none focus-within:ring-2 ring-cyan-300">
       {children}
     </div>
   );
 };
 
+const TextInputIcon = ({ children }: { children: React.ReactNode }) => (
+  <Slot className="w-6 h-6 ml-4 text-gray-400">{children}</Slot>
+);
+
 const TextInputInput = (props: TextInputInputProps) => {
   return (
     <input
-      className="bg-transparent flex-1 outline-none py-4 px-3 text-gray-100 text-xs placeholder:text-gray-400"
+      className="bg-transparent flex-1 text-gray-100 text-xs outline-none py-4 pl-4 placeholder:text-gray-400"
       {...props}
     />
   );
