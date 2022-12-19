@@ -4,8 +4,17 @@ import Button from '../components/Button';
 import Heading from '../components/Heading';
 import TextInput from '../components/TextInput';
 import Text from '../components/Text';
+import { useState } from 'react';
 
 const SignIn = () => {
+  const [data, setData] = useState({});
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false);
+  const handleSignIn = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setIsUserSignedIn(true)
+  };
+
   return (
     <div className="h-screen flex flex-col justify-center items-center gap-8 px-4">
       <div className="w-full max-w-sm flex flex-col justify-center items-center gap-8">
@@ -15,7 +24,11 @@ const SignIn = () => {
           <Text className="text-gray-400">Faça login e comece a usar</Text>
         </header>
 
-        <form className="flex flex-col justify-center items-center gap-8 w-full">
+        <form
+          onSubmit={handleSignIn}
+          className="flex flex-col justify-center items-center gap-8 w-full"
+        >
+          {isUserSignedIn && <Text>Login Realizado!</Text>}
           <div className="flex flex-col gap-4 w-full">
             <label htmlFor="email" className="flex flex-col gap-2">
               <Text className="font-semibold">Endereço de Email</Text>
