@@ -36,7 +36,7 @@ const TextInputInput = (props: TextInputInputProps) => {
   );
 };
 
-export const TextInput = {
+export default {
   Root: TextInputRoot,
   Input: TextInputInput,
   Icon: TextInputIcon,
