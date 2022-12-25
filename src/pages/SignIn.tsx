@@ -5,6 +5,8 @@ import Heading from '../components/Heading';
 import TextInput from '../components/TextInput';
 import Text from '../components/Text';
 import { useState } from 'react';
+import axios from 'axios';
+
 interface FormData {
   email?: string;
   password?: string;
@@ -18,6 +20,7 @@ const SignIn = () => {
   const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    await axios.post('/sessions', data);
 
     setIsUserSignedIn(true);
   };
