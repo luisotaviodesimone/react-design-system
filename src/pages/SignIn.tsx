@@ -21,7 +21,8 @@ const SignIn = () => {
   const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await axios.post('/sessions', data);
+    // not enabled because of gh pages limitations
+    // await axios.post('/sessions', data);
 
     setIsUserSignedIn(true);
   };
