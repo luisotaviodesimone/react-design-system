@@ -6,6 +6,7 @@ import TextInput from '../components/TextInput';
 import Text from '../components/Text';
 import { useState } from 'react';
 import axios from 'axios';
+import clsx from 'clsx';
 
 interface FormData {
   email?: string;
@@ -97,7 +98,9 @@ const SignIn = () => {
           </label>
 
           <div className="w-full">
-            <Button disabled={!(data.email && data.password)} type="submit">
+            <Button className={clsx({
+              'opacity-50 cursor-not-allowed': !(data.email && data.password),
+            })} disabled={!(data.email && data.password)} type="submit">
               Entrar na plataforma
             </Button>
           </div>
