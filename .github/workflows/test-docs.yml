@@ -2,7 +2,7 @@ name: Storybook Tests
 on: deployment_status
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
     steps:
