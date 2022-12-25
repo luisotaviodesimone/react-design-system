@@ -5,14 +5,28 @@ import Heading from '../components/Heading';
 import TextInput from '../components/TextInput';
 import Text from '../components/Text';
 import { useState } from 'react';
+interface FormData {
+  email?: string;
+  password?: string;
+  isRememberMeChecked?: boolean | 'indeterminate';
+}
 
 const SignIn = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<FormData>({});
   const [isUserSignedIn, setIsUserSignedIn] = useState(false);
-  const handleSignIn = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setIsUserSignedIn(true)
+
+    setIsUserSignedIn(true);
+  };
+
+  const handleDataChange = (data: FormData) => {
+    setData((prevData) => ({
+      ...prevData,
+      ...data,
+    }));
   };
 
   return (
@@ -39,6 +53,7 @@ const SignIn = () => {
                 <TextInput.Input
                   type="email"
                   placeholder="Digite o seu email"
+                  onChange={(e) => handleDataChange({ email: e.target.value })}
                 />
               </TextInput.Root>
             </label>
@@ -49,7 +64,13 @@ const SignIn = () => {
                 <TextInput.Icon>
                   <Lock />
                 </TextInput.Icon>
-                <TextInput.Input type="password" placeholder="********" />
+                <TextInput.Input
+                  onChange={(e) =>
+                    handleDataChange({ password: e.target.value })
+                  }
+                  type="password"
+                  placeholder="********"
+                />
               </TextInput.Root>
             </label>
           </div>
@@ -58,7 +79,12 @@ const SignIn = () => {
             htmlFor="remember"
             className="group flex gap-2 self-start cursor-pointer"
           >
-            <Checkbox id="remember" />
+            <Checkbox
+              onCheckedChange={(isRememberMeChecked) =>
+                handleDataChange({ isRememberMeChecked })
+              }
+              id="remember"
+            />
             <Text
               size="sm"
               className="group-hover:text-cyan-300 transition-all"
@@ -68,7 +94,9 @@ const SignIn = () => {
           </label>
 
           <div className="w-full">
-            <Button type="submit">Entrar na plataforma</Button>
+            <Button disabled={!(data.email && data.password)} type="submit">
+              Entrar na plataforma
+            </Button>
           </div>
         </form>
 
